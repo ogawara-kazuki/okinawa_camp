@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <title>ロッテ春季キャンプ</title>
+
+  <!-- ロゴ風のフォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+/* Sanrioっぽい色 */
+/* ===== ピンク版 サンリオ風カーブ ===== */
+:root{
+  --sanrio-pink:#f8cdd0;
+  --sanrio-pink2:#f6b7c0;
+}
+
+.curvedTop{
+  position:relative;
+  background:#f5b6c1;   /* やわらかピンク */
+  padding:100px 12px 150px;
+}
+
+
+.curvedTop::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-1px;
+
+  width:200%;        /* ← 横を広げる */
+  background:20#fff;
+  height:300px;
+  border-top-left-radius:5000px 300px;
+  border-top-right-radius:5000px 300px;
+
+}
+
+.dayCard{
+  position:relative;
+  margin-top:80px;
+  border:3px solid #f6b7c0;
+  border-top:none;          /* ← 上の線を消す */
+  border-radius:20px;
+  padding-top:30px;
+}
+
+
+.kitty{
+  position:absolute;
+  top:-110px;         /* ← 上に飛び出す */
+  left:50%;
+  transform:translateX(-50%);
+  width:150px;
+}
+
+
+.curvedInner{
+  position:relative;
+  z-index:1;
+  max-width:920px;
+  margin:0 auto;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;   /* 上寄せ */
+  padding-top:40px;         /* ← ここで上げる */
+  min-height:140px;
+}
+
+
+
+.sanrioText{
+  font-family:'Pacifico', cursive;
+  font-size:64px;
+  color:#ffffff;              /* 真っ白 */
+  letter-spacing:1px;
+  text-shadow:
+    0 2px 0 rgba(0,0,0,.08);  /* ほんの少し立体感 */
+}
+
+
+@media (max-width:420px){
+  .sanrioText{font-size:42px;}
+  .curvedTop{padding:30px 12px 85px;}
+  .curvedTop::after{height:200px;}
+}
+
+    *{box-sizing:border-box}
+    body{
+  margin:0;
+  background:#fff;
+  color:var(--text);
+  font-family: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+}
+
+
+    header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 14px 14px calc(10px + env(safe-area-inset-top));
+  background: linear-gradient(135deg, #f8cdd0, #f6b7c0);
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+header p {
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  opacity: .95;
+  font-weight: 500;
+}
+
+/* チップカラーもやわらかく */
+.chip {
+  background: rgba(255, 255, 255, .75);
+  border-color: rgba(255, 255, 255, .85);
+  color: #9b3766;
+}
+
+.chip:active {
+  transform: scale(.98);
+  background: rgba(255, 255, 255, .85);
+}
+
+
+    .chips{
+      display:flex; gap:8px; overflow:auto;
+      padding:10px 2px 2px;
+      scrollbar-width:none;
+    }
+    .chips::-webkit-scrollbar{display:none}
+    .chip{
+      flex:0 0 auto;
+      background:rgba(255,255,255,.22);
+      border:1px solid rgba(255,255,255,.35);
+      color:#fff;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .chip:active{transform:scale(.98)}
+
+    .wrap{max-width:920px;margin:0 auto;padding:12px 12px 92px}
+    .card{
+  background:#fff;
+  border:3px solid #f8cdd0;   /* ← ピンク枠 */
+  border-radius:22px;
+  box-shadow:0 8px 20px rgba(248,205,208,.25);
+}
+
+.card{
+  margin:32px 0;
+  box-shadow:0 12px 30px rgba(248,205,208,.35);
+}
+
+
+.dayTitle h2{
+  color:#e75480;
+  text-shadow:0 2px 6px rgba(231,84,128,.25);
+}
+
+    h3{margin:0 0 8px; font-size:14px}
+    ul{margin:6px 0 0; padding-left:18px; color:var(--sub); font-size:13.5px; line-height:1.6}
+
+    .badge{
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:12px; font-weight:700;
+      color:#0b3b5a;
+      background:var(--chip);
+      border:1px solid var(--line);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    .dayTitle{
+      display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+      margin:0 0 10px;
+    }
+    .dayTitle .date{color:var(--sub); font-size:12.5px}
+
+    .timeline{display:flex; flex-direction:column; gap:10px}
+    .item{
+      display:grid; grid-template-columns:90px 1fr;
+      gap:10px;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+    }
+    .time{
+      font-weight:900;
+      color:#06324f;
+      font-variant-numeric: tabular-nums;
+    }
+    .place{font-weight:800}
+    .memo{margin-top:4px; color:var(--sub); font-size:13.5px; line-height:1.55}
+    .rowBtns{display:flex; flex-wrap:wrap; gap:8px; margin-top:9px}
+
+    .btn.primary{
+  background: linear-gradient(135deg, #f8cdd0, #f6b7c0);
+  color:#fff;
+  border:none;
+  box-shadow:0 6px 14px rgba(246,183,192,.4);
+}
+
+    .btn:active{transform:scale(.99)}
+
+    .bottomBar{
+      position:fixed; left:0; right:0; bottom:0; z-index:20;
+      padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(243,249,255,.92);
+      border-top:1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .bottomBar .inner{
+      max-width:920px; margin:0 auto;
+      display:flex; gap:10px;
+    }
+    .bottomBar a{flex:1}
+
+    /* ===== 追加：ロゴ風ヒーロー ===== */
+    .hero .logo-main {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 48px;
+  color: #000;
+  -webkit-text-stroke: 2px #fff;
+  text-shadow: 4px 4px 0 #fad6e3;
+}
+
+
+    .camp-logo{
+      width:min(720px, calc(100% - 24px));
+      background:#fff;
+      border-radius:18px;
+      padding:18px 18px 16px;
+      text-align:center;
+      border:6px solid #000;
+      box-shadow:0 10px 22px rgba(0,0,0,.22);
+    }
+
+    .logo-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:8px;
+    }
+
+    .marines{
+      font-family:'Oswald', sans-serif;
+      font-size:18px;
+      font-weight:700;
+      font-style:italic;
+      color:#000;
+    }
+
+    .year{
+      font-family:'Anton', sans-serif;
+      font-size:22px;
+      color:#000;
+    }
+
+    .logo-main{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      font-family:'Anton', sans-serif;
+      font-size:44px;
+      line-height:1;
+    }
+
+    .logo-main span{
+      color:#000;
+      -webkit-text-stroke:3px #000;
+      text-shadow:
+        4px 4px 0 #fff,
+        6px 6px 0 rgba(0,0,0,.18);
+    }
+
+    .logo-bottom{
+      margin-top:12px;
+      background:#000;
+      color:#fff;
+      padding:6px 14px;
+      font-family:'Oswald', sans-serif;
+      font-size:14px;
+      letter-spacing:2px;
+      border-radius:8px;
+    }
+
+    @media (max-width:380px){
+      .logo-main{font-size:36px}
+      .marines{font-size:16px}
+      .year{font-size:20px}
+      .item{grid-template-columns:84px 1fr;}
+    }
+    /* ===== サンリオ風バナー ===== */
+.sanrioBanner{
+  margin:14px 12px 0;
+}
+
+.sanrioBox{
+  height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#8fd3dd;      /* 画像の水色っぽい色 */
+  border:2px solid #111;   /* 画像みたいに枠線 */
+  border-radius:10px;      /* 角の丸み（不要なら0に） */
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
+}
+
+.sanrioText{
+  font-family:'Pacifico', cursive;
+  font-size:54px;
+  color:#fff;
+  line-height:1;
+  letter-spacing:1px;
+  text-shadow:0 2px 0 rgba(0,0,0,.08);
+}
+
+/* スマホ小さめ */
+@media (max-width:420px){
+  .sanrioText{font-size:42px;}
+  .sanrioBox{height:105px;}
+}
+.day1Card{
+  position:relative;
+}
+
+.kittyRight{
+  position:absolute;
+  right:-200px;     /* ← 枠の外に出す */
+  top:50%;
+  transform:translateY(-50%);
+  width:180px;
+}
+.day3Card{
+  position:relative;
+}
+
+.kittyLeft{
+  position:absolute;
+  left:-190px;     /* ← 左に出す */
+  top:50%;
+  transform:translateY(-50%);
+  width:170px;
+}
+.day0Card{
+  position:relative;
+}
+
+.cinnamonLeft{
+  position:absolute;
+  left:-220px;      /* ← 左に出す */
+  top:50%;
+  transform:translateY(-50%);
+  width:200px;
+}
+.topButtons{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin:40px 0;
+}
+
+.topBtn{
+  padding:10px 22px;
+  background:#f8cdd0;
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 6px 14px rgba(248,205,208,.4);
+  transition:.2s;
+}
+
+.topBtn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 18px rgba(248,205,208,.6);
+}
+
+.lotteBtn{
+  background:#e75480;  /* ロッテだけ濃いめ */
+}
+.kuromiRight{
+  position:absolute;
+  right:-220px;     /* ← 右に出す */
+  top:50%;
+  transform:translateY(-50%);
+  width:190px;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <section class="curvedTop">
+    <div class="curvedInner">
+      <div class="sanrioText">SPRING CAMP</div>
+    </div>
+  </section>
+  <div class="topButtons">
+    <a href="#" class="topBtn">アクセス</a>
+  
+    <a href="https://www.marines.co.jp/team/2026/springcamp/#close"
+       target="_blank"
+       class="topBtn lotteBtn">
+       ロッテ
+    </a>
+  
+    <a href="#" class="topBtn">持ち物</a>
+  </div>
+  
+
+  <div class="wrap">
+
+    <!-- 0日目 -->
+    <section id="day0" class="card dayCard">
+      <img src="シナモン.png" class="cinnamonLeft" alt="cinnamon">
+      <img src="kuromi.png" class="kuromiRight" alt="kuromi">
+
+    
+      <div class="dayTitle">
+        <h2>0日目</h2>
+        <div class="date">2/19</div>
+      </div>
+
+      <div class="timeline">
+        <div class="item">
+          <div class="time">18:10</div>
+          <div>
+            <div class="place">バスタ新宿 発</div>
+            <div class="memo">羽田へ移動！お仕事お疲れ様(>_<)♡</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">18:55</div>
+          <div>
+            <div class="place">羽田空港 第2ターミナル 着</div>
+            <div class="memo">チェックイン・保安検査</div>
+            <div class="rowBtns">
+              <a class="btn primary" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=羽田空港+第2ターミナル">地図</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">20:35</div>
+          <div>
+            <div class="place">羽田 発（ANA1133）</div>
+            <div class="memo">予約番号 0253</div>
+            <div class="memo">う：12A も：12F</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">23:25</div>
+          <div>
+            <div class="place">沖縄（那覇）着</div>
+            <div class="memo">
+              ホテルへ移動<br>
+            </div>
+            <div class="rowBtns">
+              <a class="btn primary" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=那覇空港">那覇空港</a>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=ティサージホテル那覇">ホテル地図</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1日目 -->
+    <section id="day1" class="card day1Card">
+      <img src="キティ2.png" class="kittyRight" alt="kitty">
+    
+      <div class="dayTitle">
+        <h2>1日目</h2>
+        <div class="date">2/20</div>
+      </div>
+
+      <div class="timeline">
+        <div class="item">
+          <div class="time">9:30(?)</div>
+          <div>
+            <div class="place">練習＠西崎運動公園</div>
+            <div class="memo">〒901-0306　沖縄県糸満市字西崎3-1</div>
+            <div class="memo">ティサージホテルから🚖で24分（サザンビーチホテルに荷物置く場合は🚖で30分）</div>
+            <div class="rowBtns">
+              <a class="btn primary" target="_blank" rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=西崎運動公園"> MAP</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">15:00~</div>
+          <div>
+            <div class="place">サザンビーチホテルチェックイン</div>
+            <div class="memo">〒901-0306 沖縄県糸満市西崎町1丁目6番1号</div>
+            <div class="rowBtns">
+              <a class="btn primary" target="_blank" rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=サザンビーチホテル">MAP</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="time">Dinner</div>
+          <div>
+            <div class="place">美味しいもの食べよーー！！</div>
+            <div class="memo"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2日目 -->
+    <section id="day2" class="card">
+      <div class="dayTitle">
+        <h2>2日目</h2>
+        <div class="date">2/21</div>
+      </div>
+
+      <div class="timeline">
+        <div class="item">
+          <div class="time">13:00</div>
+          <div>
+            <div class="place">試合開始｜オープン戦 vs 楽天</div>
+            <div class="memo">@ 金武町ベースボールスタジアム</div>
+            <div class="memo">10時着くらい、、？</div>
+            <div class="rowBtns">
+              <a class="btn primary" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=金武町ベースボールスタジアム">MAP</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- 3日目 -->
+    <section id="day3" class="card day3Card">
+      <img src="kitty3.png" class="kittyLeft" alt="kitty">
+    
+      <div class="dayTitle">
+        <h2>3日目</h2>
+        <div class="date">2/22</div>
+      </div>
+
+      <div class="timeline">
+        <div class="item">
+          <div class="time">~11:00</div>
+          <div>
+            <div class="place">サザンビーチホテルチェックアウト</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="time">12:30</div>
+          <div>
+            <div class="place">試合開始｜練習試合 vs ハンファ・イーグルス</div>
+            <div class="memo">@ 西崎運動公園</div>
+            <div class="rowBtns">
+              <a class="btn primary" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=西崎運動公園">MAP</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">20:15</div>
+          <div>
+            <div class="place">沖縄（那覇）発｜ANA1096</div>
+            <div class="memo">予約番号 0626</div>
+            <div class="memo">う：28B も：28A</div>
+            <div class="memo">羽田へフライト ✈️</div>
+            <div class="rowBtns">
+              <a class="btn primary" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=那覇空港">那覇空港</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">22:25</div>
+          <div>
+            <div class="place">羽田空港 着</div>
+            <div class="memo"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
