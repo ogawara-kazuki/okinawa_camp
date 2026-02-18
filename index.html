@@ -93,8 +93,8 @@
     body{
   margin:0;
   background:#fff;
-  color:var(--text);
   font-family: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  overflow-x:hidden;   /* ← これを追加！ */
 }
 
 
@@ -203,10 +203,10 @@ header p {
       background:#fff;
     }
     .time{
-      font-weight:900;
-      color:#06324f;
-      font-variant-numeric: tabular-nums;
-    }
+  font-weight:900;
+  color:#6ec1d6;   /* ← ここ変更 */
+}
+
     .place{font-weight:800}
     .memo{margin-top:4px; color:var(--sub); font-size:13.5px; line-height:1.55}
     .rowBtns{display:flex; flex-wrap:wrap; gap:8px; margin-top:9px}
@@ -376,6 +376,7 @@ header p {
   justify-content:center;
   gap:18px;
   margin:40px 0;
+  transform:translateX(-80px); 
 }
 
 .topBtn{
@@ -404,6 +405,31 @@ header p {
   transform:translateY(-50%);
   width:190px;
 }
+.cinnamonRight{
+  position:absolute;
+  right:-300px;   /* ← 右に出す */
+  top:50%;
+  transform:translateY(-50%);
+  width:250px;
+}
+.day2Card{
+  position:relative;
+}
+
+.usahanaLeft{
+  position:absolute;
+  left:-180px;   /* ← 左に出す */
+  top:50%;
+  transform:translateY(-50%);
+  width:170px;
+}
+@media (max-width:600px){
+  .usahanaLeft{
+    left:-70px;
+    width:120px;
+  }
+}
+
 
   </style>
 </head>
@@ -416,15 +442,18 @@ header p {
     </div>
   </section>
   <div class="topButtons">
-    <a href="#" class="topBtn">アクセス</a>
+    <a href="http://www.go-tabi.com/okinawa/bb_camp/bb_kin2/" 
+       target="_blank"
+       class="topBtn">金武町ベースボールスタジアム</a>
   
     <a href="https://www.marines.co.jp/team/2026/springcamp/#close"
        target="_blank"
        class="topBtn lotteBtn">
-       ロッテ
-    </a>
+       ロッテ</a>
   
-    <a href="#" class="topBtn">持ち物</a>
+    <a href="https://www.southernbeach-okinawa.com/restaurant/breakfast/" 
+       target="_blank"
+       class="topBtn">朝食</a>
   </div>
   
 
@@ -437,10 +466,8 @@ header p {
 
     
       <div class="dayTitle">
-        <h2>0日目</h2>
-        <div class="date">2/19</div>
-      </div>
-
+        <h2>0日目（2/19）</h2>
+      </div>  
       <div class="timeline">
         <div class="item">
           <div class="time">18:10</div>
@@ -467,7 +494,7 @@ header p {
           <div>
             <div class="place">羽田 発（ANA1133）</div>
             <div class="memo">予約番号 0253</div>
-            <div class="memo">う：12A も：12F</div>
+            <div class="memo">う：12A も：12K</div>
           </div>
         </div>
 
@@ -476,13 +503,13 @@ header p {
           <div>
             <div class="place">沖縄（那覇）着</div>
             <div class="memo">
-              ホテルへ移動<br>
+              ティサージホテルへ移動<br>
             </div>
+            <div class="memo">〒900-0036 沖縄県那覇市西2丁目14-1</div>
+            <div class="memo">空港から🚖で8分</div>
             <div class="rowBtns">
-              <a class="btn primary" target="_blank" rel="noopener"
-                 href="https://www.google.com/maps/search/?api=1&query=那覇空港">那覇空港</a>
-              <a class="btn" target="_blank" rel="noopener"
-                 href="https://www.google.com/maps/search/?api=1&query=ティサージホテル那覇">ホテル地図</a>
+            <a class="btn primary" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=ティサージホテル那覇">MAP</MAP></a>
             </div>
           </div>
         </div>
@@ -494,11 +521,17 @@ header p {
       <img src="キティ2.png" class="kittyRight" alt="kitty">
     
       <div class="dayTitle">
-        <h2>1日目</h2>
-        <div class="date">2/20</div>
+        <h2>1日目（2/20）</h2>
       </div>
 
       <div class="timeline">
+        <div class="item">
+          <div class="time"></div>
+          <div>
+            <div class="place">起床</div>
+            <div class="memo">結構早めに起きたほうがよさそう！</div>
+          </div>
+        </div>
         <div class="item">
           <div class="time">9:30(?)</div>
           <div>
@@ -534,23 +567,42 @@ header p {
     </section>
 
     <!-- 2日目 -->
-    <section id="day2" class="card">
+    <section id="day2" class="card day2Card">
+      <img src="うさはな.png" class="usahanaLeft" alt="usahana">
+    
       <div class="dayTitle">
-        <h2>2日目</h2>
-        <div class="date">2/21</div>
+        <h2>2日目（2/21）</h2>
       </div>
 
       <div class="timeline">
+        <div class="item">
+          <div class="time">~10:00</div>
+          <div>
+            <div class="place">朝食🍚🍞</div>
+            <div class="memo"></div>
+          </div>
+        </div>
+        
         <div class="item">
           <div class="time">13:00</div>
           <div>
             <div class="place">試合開始｜オープン戦 vs 楽天</div>
             <div class="memo">@ 金武町ベースボールスタジアム</div>
-            <div class="memo">10時着くらい、、？</div>
+            <div class="memo">11時着目安？？</div>
+            <div class="memo">交通手段は🚖相乗りか🚌</div>
+            <div class="memo">🚖：1時間　🚌：１時間半</div>
             <div class="rowBtns">
               <a class="btn primary" target="_blank" rel="noopener"
                  href="https://www.google.com/maps/search/?api=1&query=金武町ベースボールスタジアム">MAP</a>
             </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="time">17：00　（適当😂）</div>
+          <div>
+            <div class="place">ご飯など自由時間🌸</div>
+            <br>
+            <div class="memo"></div>
           </div>
         </div>
       </div>
@@ -560,10 +612,11 @@ header p {
     <!-- 3日目 -->
     <section id="day3" class="card day3Card">
       <img src="kitty3.png" class="kittyLeft" alt="kitty">
+      <img src="シナモン2.png" class="cinnamonRight" alt="cinnamon">
+    
     
       <div class="dayTitle">
-        <h2>3日目</h2>
-        <div class="date">2/22</div>
+        <h2>3日目（2/22）</h2>
       </div>
 
       <div class="timeline">
@@ -578,13 +631,23 @@ header p {
           <div>
             <div class="place">試合開始｜練習試合 vs ハンファ・イーグルス</div>
             <div class="memo">@ 西崎運動公園</div>
+            <br>
+            <div class="memo"></div>
             <div class="rowBtns">
               <a class="btn primary" target="_blank" rel="noopener"
                  href="https://www.google.com/maps/search/?api=1&query=西崎運動公園">MAP</a>
             </div>
           </div>
         </div>
-
+        <div class="item">
+          <div class="time">16：00　（適当😂）</div>
+          <div>
+            <div class="place">自由時間</div>
+            <div class="memo">名残惜しいけど時間になったら空港向かおう...</div>
+            <br>
+            <div class="memo">国際通り辺りだったら空港まで🚖で10分</div>
+          </div>
+        </div>
         <div class="item">
           <div class="time">20:15</div>
           <div>
